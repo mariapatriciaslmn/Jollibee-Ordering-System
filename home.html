@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+
+  <div class="logo">
+    🍔 Jollibee System
+  </div>
+
+  <nav class="nav">
+
+    <button onclick="showSection('menu')">Menu</button>
+    <button onclick="showSection('track')">Track Order</button>
+    <button onclick="showSection('history')">Order History</button>
+    <button onclick="showSection('about')">About</button>
+
+  </nav>
+
+  <div class="cart" onclick="toggleCart()">
+    🛒 <span id="cartCount">0</span>
+  </div>
+
+</header>
+
+    <script src="script.js"></script>
+</body>
+</html>
