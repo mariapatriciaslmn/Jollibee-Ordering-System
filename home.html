@@ -3,31 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Jollibee Ordering System</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="header">
 
-  <div class="logo">
-    🍔 Jollibee System
-  </div>
+    <div class="header-container">
 
-  <nav class="nav">
+        <!-- LOGO -->
+        <div class="logo">
+            <img src="https://1000logos.net/wp-content/uploads/2019/03/jollibee-logo-png.png" 
+                 alt="Jollibee"
+                 onerror="this.src='https://via.placeholder.com/140x50/FF6B35/FFFFFF?text=Jollibee'">
+            <span class="logo-text">Jollibee</span>          
+        </div>
 
-    <button onclick="showSection('menu')">Menu</button>
-    <button onclick="showSection('track')">Track Order</button>
-    <button onclick="showSection('history')">Order History</button>
-    <button onclick="showSection('about')">About</button>
+    <!-- CENTER: NAV -->
+    <nav class="nav">
+    <button class="nav-btn active" onclick="showSection('menu', event)">Menu</button>
+    <button class="nav-btn" onclick="showSection('track', event)">Track Order</button>
+    <button class="nav-btn" onclick="showSection('history', event)">History</button>
+    </nav>
 
-  </nav>
+    <!-- RIGHT: ACTIONS -->
+    <div class="header-right">
 
-  <div class="cart" onclick="toggleCart()">
-    🛒 <span id="cartCount">0</span>
+      <!-- LOCATION -->
+      <div class="location" onclick="setLocation()">
+         <span id="userLocation">Select Address</span>
+      </div>
+
+      <!-- CART -->
+      <div class="cart" onclick="toggleCart()">
+        <img class="cart_logo" src='cart-shopping-solid-full.svg' alt="🛒">
+        <span class="cart-count" id="cartCount">0</span>
+      </div>
+
+      <!-- LOGOUT -->
+      <button class="logout-btn" onclick="logout()">Logout</button>
+
+    </div>
+
   </div>
 
 </header>
 
+<!-- SECTIONS -->
+<main class="main">
+
+    <section id="menu" class="section active">
+        <div class="menu-container">
+            <!-- Header -->
+        <div class="section-header">
+            <h2 id="menuTitle">All Menu Items</h2>
+
+            <div class="filter-buttons">
+                <button class="filter-btn" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="chickenjoy">Chickenjoy</button>
+                <button class="filter-btn" data-filter="burgers">Burgers</button>
+                <button class="filter-btn" data-filter="sides">Sides</button>
+            </div>
+        </div>
+
+        <!-- Menu Grid -->
+        <div class="menu-grid" id="menuGrid">
+                <!-- Menu items populated by JS -->
+        </div>
+    </div>
+    </section>    
+
+    <section id="track" class="section" style="display:none;">
+        Track Order Section
+    </section>
+
+    <section id="history" class="section" style="display:none;">
+        Order History Section
+    </section>
+
+    <section id="about" class="section" style="display:none;">
+        About Us Section
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-overlay" id="cartOverlay"></div>
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3><i class="fas fa-shopping-cart"></i> My Cart</h3>
+                <span class="close-cart" id="closeCart">&times;</span>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <div class="empty-cart">
+                    <i class="fas fa-shopping-cart" style="font-size: 4rem; color: #FF6B35;"></i>
+                    <p>Your cart is empty</p>
+                    <button class="order-btn">Start Ordering</button>
+                </div>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-summary">
+                    <div class="subtotal">
+                        <span>Subtotal:</span>
+                        <span>₱<span id="subtotal">0</span></span>
+                    </div>
+                    <div class="delivery-fee">
+                        <span>Delivery Fee:</span>
+                        <span>₱50</span>
+                    </div>
+                    <div class="total">
+                        <span>Total:</span>
+                        <span>₱<span id="cartTotal">50</span></span>
+                    </div>
+                </div>
+                <button class="checkout-btn" id="checkoutBtn" disabled>Checkout (₱<span id="checkoutTotal">50</span>)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- LEFT: BRAND -->
+    <div class="footer-brand">
+      <img src="https://1000logos.net/wp-content/uploads/2019/03/jollibee-logo-png.png" 
+           alt="Jollibee"
+           onerror="this.src='https://via.placeholder.com/140x50/FF6B35/FFFFFF?text=Jollibee'">  
+      <span>Jollibee</span> 
+    </div>
+
+    <!-- CENTER: LINKS -->
+    <div class="footer-links">
+      <div class="footer-group">
+        <h4>Menu</h4>
+        <a href="#">Chickenjoy</a>
+        <a href="#">Burgers</a>
+        <a href="#">Sides</a>
+      </div>
+
+      <div class="footer-group">
+        <h4>Company</h4>
+        <a href="#">About</a>
+        <a href="#">Careers</a>
+        <a href="#">Franchise</a>
+      </div>
+
+      <div class="footer-group">
+        <h4>Help</h4>
+        <a href="#">Contact</a>
+        <a href="#">FAQ</a>
+        <a href="#">Support</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    <p>© 2026 Jollibee Ordering System | All Rights Reserved</p>
+  </div>
+</footer>
+
+</main>
     <script src="script.js"></script>
 </body>
 </html>
